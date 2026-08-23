@@ -151,7 +151,7 @@ export function getStudentBio(student: { name: string; matric: string; programme
 
   return {
     summary: `${student.name} is a high-performing 200-level undergraduate studying ${student.programme} at Chrisland University, Abeokuta. Under the pedagogical guidance of S. B. Omotoso in the GST 206 AI Literacy & Vibe Coding curriculum, ${student.name} demonstrated exceptional technical agility by designing, architecting, and deploying a functional web application tailored specifically for ${themeFocus}.`,
-    academicStanding: `200-Level Undergraduate · Department of Computer Science & General Studies · Chrisland University`,
+    academicStanding: `200-Level Undergraduate · Entrepreneurship & General Studies · Chrisland University`,
     skills: [
       'Vibe Coding & Vibe Engineering',
       'AI-Assisted Web Architecture',
@@ -4320,7 +4320,7 @@ export function Showcase() {
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-slate-100 text-sm tracking-tight">Chrisland University</span>
-              <span className="text-slate-400 text-xs">Department of Computer Science & General Studies · GST 206</span>
+              <span className="text-slate-400 text-xs">Entrepreneurship & General Studies · GST 206</span>
             </div>
           </div>
 
