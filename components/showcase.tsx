@@ -1158,34 +1158,39 @@ export function Showcase() {
       </AnimatePresence>
 
       {/* Top Fixed Header with Desktop Horizontal Menu & Mobile Hamburger Menu */}
-      <header className="sticky top-0 z-50 bg-[#07090e]/95 backdrop-blur-md border-b border-white/10 px-4 sm:px-6 lg:px-12 py-3">
+      <header className="sticky top-0 z-50 bg-[#07090e]/95 backdrop-blur-md border-b border-white/10 px-4 sm:px-6 lg:px-8 py-2.5">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
           
           {/* Logo & Institution Branding */}
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#0f1422] border border-white/20 flex items-center justify-center shadow-lg shadow-black/40 overflow-hidden p-1 flex-shrink-0">
+          <div className="flex items-center gap-2.5 flex-shrink-0">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-[#0f1422] border border-white/20 flex items-center justify-center shadow-lg shadow-black/40 overflow-hidden p-1 flex-shrink-0">
               <Image 
                 src="/Chrisland-Logo.jpeg" 
                 alt="Chrisland University Logo" 
-                width={36} 
-                height={36} 
+                width={32} 
+                height={32} 
                 priority
-                referrerPolicy="no-referrer"
+                referrerPolicy="no-referrer" 
                 className="object-contain" 
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm sm:text-base font-bold tracking-tight text-white leading-tight">
-                Chrisland University
-              </span>
-              <span className="text-[11px] sm:text-xs text-white/60 font-medium">
-                GST 206 AI Literacy & Vibe Coding
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs sm:text-sm font-bold tracking-tight text-white leading-tight">
+                  Chrisland University
+                </span>
+                <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 whitespace-nowrap">
+                  GST 206
+                </span>
+              </div>
+              <span className="text-[10px] sm:text-[11px] text-slate-400 font-medium hidden sm:inline leading-tight">
+                AI & Vibe Coding Showcase
               </span>
             </div>
           </div>
 
           {/* DESKTOP: Horizontal Menu Bar */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-2.5">
             {/* Dedicated Showcase Items Menu */}
             <nav className="flex items-center gap-1 p-1 bg-white/[0.04] border border-white/10 rounded-xl">
               <button
@@ -1272,7 +1277,7 @@ export function Showcase() {
                 }`}
               >
                 <BookOpen className="w-3.5 h-3.5 text-purple-300" />
-                <span>Insights & Blog</span>
+                <span>Insights</span>
                 <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-white/20 text-white font-mono font-bold">
                   {EDUCATIONAL_ARTICLES.length}
                 </span>
@@ -1288,17 +1293,17 @@ export function Showcase() {
                 }`}
               >
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                <span>Training & Facilitation</span>
+                <span>Facilitation</span>
               </button>
             </nav>
 
             {/* Search Input */}
-            <div className="relative w-44 xl:w-52">
+            <div className="relative w-40 2xl:w-48">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/40" />
               <input 
                 id="desktop-search-input"
                 type="text"
-                placeholder="Search students..."
+                placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-white/[0.06] border border-white/10 rounded-xl py-1.5 pl-8 pr-7 text-xs text-white placeholder:text-white/40 focus:outline-none focus:border-[#B25900] transition-all"
@@ -1321,8 +1326,7 @@ export function Showcase() {
               title="Open Executive Innovation Summary for University Authorities & Public"
             >
               <Award className="w-3.5 h-3.5 text-amber-400" />
-              <span className="hidden xl:inline">Executive Innovation</span>
-              <span>Summary</span>
+              <span>Executive Brief</span>
             </button>
 
             {/* DESIGN PLATFORM ONLY: Add Entry, Google Sheet Sync Hub, Reset */}
@@ -1377,7 +1381,7 @@ export function Showcase() {
           </div>
 
           {/* MOBILE: Quick Action Icons & Hamburger Toggle Button */}
-          <div className="flex lg:hidden items-center gap-2">
+          <div className="flex xl:hidden items-center gap-2">
             <button
               onClick={() => setIsExecutiveSummaryModalOpen(true)}
               className="p-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300"
@@ -1443,7 +1447,7 @@ export function Showcase() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden mt-3 pt-3 border-t border-white/10 space-y-3 overflow-hidden"
+              className="xl:hidden mt-3 pt-3 border-t border-white/10 space-y-3 overflow-hidden"
             >
               {/* Institution Identity in Mobile Drawer */}
               <div className="flex items-center gap-2.5 px-1 py-1">
@@ -1458,8 +1462,13 @@ export function Showcase() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xs font-bold text-white leading-tight">Chrisland University</span>
-                  <span className="text-[10px] text-white/60 font-medium">GST 206 AI Literacy & Vibe Coding</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-xs font-bold text-white leading-tight">Chrisland University</span>
+                    <span className="text-[9px] font-mono font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                      GST 206
+                    </span>
+                  </div>
+                  <span className="text-[10px] text-white/60 font-medium">AI Literacy & Vibe Coding</span>
                 </div>
               </div>
 
