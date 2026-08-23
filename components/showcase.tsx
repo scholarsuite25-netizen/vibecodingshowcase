@@ -999,7 +999,7 @@ export function Showcase() {
       setSuggestingProject(project);
       setSuggestionCorrection({
         studentName: project.name,
-        matricNumber: project.matric,
+        matricNumber: '',
         proposedWebsite: project.websiteUrl,
         proposedVideo: project.videoUrl,
         notes: ''
@@ -1522,7 +1522,7 @@ export function Showcase() {
                 <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40" />
                 <input 
                   type="text"
-                  placeholder="Search students, matric, or topics..."
+                  placeholder="Search students, programmes, or topics..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full bg-white/[0.06] border border-white/10 rounded-xl py-2 pl-9 pr-8 text-xs text-white placeholder:text-white/40 focus:outline-none focus:border-[#B25900]"
@@ -2580,7 +2580,7 @@ export function Showcase() {
                       onPlay={() => setSelectedVideo({
                         url: project.videoUrl,
                         title: musicInfo.title,
-                        author: `${project.name} (${project.matric}) · ${musicInfo.genreTag}`
+                        author: `${project.name} · ${musicInfo.genreTag}`
                       })}
                       onCopy={(url) => copyToClipboard(url, `vid-${project.id}`)}
                       isCopied={copiedId === `vid-${project.id}`}
@@ -4111,8 +4111,8 @@ export function Showcase() {
                         <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider border ${themeBadgeColor}`}>
                           {studentTheme.toUpperCase()} THEME
                         </span>
-                        <span className="text-[11px] font-mono text-slate-400 font-bold">
-                          {contactingStudent.matric}
+                        <span className="text-[11px] font-medium text-slate-300">
+                          {contactingStudent.programme}
                         </span>
                       </div>
                       <h3 className="text-lg sm:text-xl font-black text-white tracking-tight mt-0.5">
@@ -4262,7 +4262,7 @@ export function Showcase() {
                               setSelectedVideo({
                                 url: contactingStudent.videoUrl || '',
                                 title: musicInfo.title,
-                                author: `${contactingStudent.name} (${contactingStudent.matric}) · ${musicInfo.genreTag}`
+                                author: `${contactingStudent.name} · ${musicInfo.genreTag}`
                               });
                             }}
                             className="flex-1 py-2.5 px-4 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold flex items-center justify-center gap-2 shadow-lg shadow-red-600/20 transition-all cursor-pointer"
@@ -4291,7 +4291,7 @@ export function Showcase() {
                           {bio.academicStanding}
                         </p>
                         <p className="text-xs text-slate-300">
-                          Programme: <span className="text-indigo-300 font-semibold">{contactingStudent.programme}</span> · Matriculation: <span className="font-mono text-slate-200">{contactingStudent.matric}</span>
+                          Programme: <span className="text-indigo-300 font-semibold">{contactingStudent.programme}</span> · Institution: <span className="text-slate-200 font-medium">Chrisland University, Abeokuta</span>
                         </p>
                       </div>
 
@@ -4373,7 +4373,7 @@ export function Showcase() {
                           <a
                             id="student-modal-whatsapp-btn"
                             href={`https://wa.me/2348034710699?text=${encodeURIComponent(
-                              `Hello S. B. Omotoso, I am reaching out through the GST 206 Academic Showcase to connect regarding student creator ${contactingStudent.name} (${contactingStudent.matric} - ${contactingStudent.programme}).${
+                              `Hello S. B. Omotoso, I am reaching out through the GST 206 Academic Showcase to connect regarding student creator ${contactingStudent.name} (${contactingStudent.programme}).${
                                 studentNote ? `\n\nMessage/Feedback: "${studentNote}"` : ''
                               }\n\nProject Link: ${contactingStudent.websiteUrl || 'GST 206 Web App'}`
                             )}`}
@@ -4390,9 +4390,9 @@ export function Showcase() {
                           <a
                             id="student-modal-email-btn"
                             href={`mailto:sbomotoso@gmail.com?subject=${encodeURIComponent(
-                              `GST 206 Student Connection: ${contactingStudent.name} (${contactingStudent.matric})`
+                              `GST 206 Student Connection: ${contactingStudent.name} (${contactingStudent.programme})`
                             )}&body=${encodeURIComponent(
-                              `Hello S. B. Omotoso,\n\nI am contacting you regarding GST 206 student creator:\n\nStudent Name: ${contactingStudent.name}\nMatric: ${contactingStudent.matric}\nProgramme: ${contactingStudent.programme}\nGroup: ${contactingStudent.groupName || 'Individual'}\nWeb App URL: ${contactingStudent.websiteUrl || 'N/A'}\nVideo URL: ${contactingStudent.videoUrl || 'N/A'}\n\nMessage / Feedback Note:\n${studentNote || 'I was impressed with this student\'s project and would like to connect / offer commendation.'}\n\nBest regards.`
+                              `Hello S. B. Omotoso,\n\nI am contacting you regarding GST 206 student creator:\n\nStudent Name: ${contactingStudent.name}\nProgramme: ${contactingStudent.programme}\nGroup: ${contactingStudent.groupName || 'Individual'}\nWeb App URL: ${contactingStudent.websiteUrl || 'N/A'}\nVideo URL: ${contactingStudent.videoUrl || 'N/A'}\n\nMessage / Feedback Note:\n${studentNote || 'I was impressed with this student\'s project and would like to connect / offer commendation.'}\n\nBest regards.`
                             )}`}
                             className="py-2.5 px-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-md shadow-red-600/20 group"
                             title="Email regarding this student"
@@ -4433,7 +4433,7 @@ export function Showcase() {
                       <div className="pt-2">
                         <button
                           onClick={() => {
-                            const textToCopy = `Student Project Commendation:\nName: ${contactingStudent.name}\nMatric: ${contactingStudent.matric}\nProgramme: ${contactingStudent.programme}\nGroup: ${contactingStudent.groupName || 'Individual'}\nTheme: ${studentTheme.toUpperCase()}\nProject Title: ${projectDetails.title}\nLive Web App: ${contactingStudent.websiteUrl || 'N/A'}\nVideo Pitch: ${contactingStudent.videoUrl || 'N/A'}\nCourse: GST 206 (AI Literacy & Vibe Coding)\nInstitution: Chrisland University, Abeokuta\nCourse Directorate: S. B. Omotoso`;
+                            const textToCopy = `Student Project Commendation:\nName: ${contactingStudent.name}\nProgramme: ${contactingStudent.programme}\nGroup: ${contactingStudent.groupName || 'Individual'}\nTheme: ${studentTheme.toUpperCase()}\nProject Title: ${projectDetails.title}\nLive Web App: ${contactingStudent.websiteUrl || 'N/A'}\nVideo Pitch: ${contactingStudent.videoUrl || 'N/A'}\nCourse: GST 206 (AI Literacy & Vibe Coding)\nInstitution: Chrisland University, Abeokuta\nCourse Directorate: S. B. Omotoso`;
                             navigator.clipboard.writeText(textToCopy);
                             setStudentCommendationCopied(true);
                             setTimeout(() => setStudentCommendationCopied(false), 2500);
@@ -4765,7 +4765,7 @@ function GroupCard({
                         ) : (
                           <p className="font-semibold text-white truncate">{st.name}</p>
                         )}
-                        <p className="text-[10px] text-slate-400 font-mono truncate">{st.matric} · {st.programme}</p>
+                        <p className="text-[10px] text-slate-400 truncate">{st.programme}</p>
                       </div>
                       <div className="flex items-center gap-1">
                         <button
@@ -4963,10 +4963,10 @@ function VideoCard({
           {project.videoUrl.includes('suno.com') ? 'Suno Audio' : 'YouTube'}
         </div>
 
-        {/* Matric Badge & Modified Badge */}
+        {/* Track Badge & Modified Badge */}
         <div className="absolute top-2.5 left-2.5 flex items-center gap-1.5">
-          <span className="px-2 py-0.5 rounded bg-black/85 text-[10px] font-mono text-slate-300 font-semibold border border-white/10">
-            {project.matric || `Student #${index + 1}`}
+          <span className="px-2 py-0.5 rounded bg-black/85 text-[10px] font-mono text-amber-300 font-semibold border border-white/10">
+            {isAdmin && project.matric ? project.matric : `Track #${index + 1}`}
           </span>
           {project.isModified && (
             <span className="px-2 py-0.5 rounded bg-amber-500 text-[9px] font-bold text-black border border-amber-400">
@@ -5241,9 +5241,9 @@ function WebsiteCard({
           </div>
         </div>
 
-        {/* Matric Badge */}
-        <div className="absolute top-8 left-2.5 px-2 py-0.5 rounded bg-black/85 text-[10px] font-mono text-slate-300 font-semibold border border-white/10 z-10">
-          {project.matric || `Student #${index + 1}`}
+        {/* App Project Badge */}
+        <div className="absolute top-8 left-2.5 px-2 py-0.5 rounded bg-black/85 text-[10px] font-mono text-emerald-300 font-semibold border border-white/10 z-10">
+          {isAdmin && project.matric ? project.matric : `App #${index + 1}`}
         </div>
 
         {/* Hover Launch Indicator on Preview */}
