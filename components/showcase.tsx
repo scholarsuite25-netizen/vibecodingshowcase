@@ -1188,8 +1188,16 @@ export function Showcase() {
           
           {/* Logo & Institution Branding */}
           <div className="flex items-center gap-2.5 flex-shrink-0">
-            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-amber-500/20 via-indigo-950/40 to-purple-950/60 border border-amber-500/30 flex items-center justify-center shadow-lg shadow-black/40 flex-shrink-0">
-              <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-amber-400" />
+            <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-white border border-amber-500/40 flex items-center justify-center shadow-lg shadow-black/40 overflow-hidden p-0.5 flex-shrink-0">
+              <Image 
+                src="/Chrisland-Logo.jpeg" 
+                alt="Chrisland University Official Crest" 
+                width={32} 
+                height={32} 
+                priority
+                unoptimized
+                className="object-contain w-full h-full" 
+              />
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1.5">
@@ -1488,8 +1496,15 @@ export function Showcase() {
             >
               {/* Institution Identity in Mobile Drawer */}
               <div className="flex items-center gap-2.5 px-1 py-1">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500/20 to-indigo-500/20 flex items-center justify-center shadow-md shadow-black/40 flex-shrink-0 border border-amber-500/30">
-                  <GraduationCap className="w-4 h-4 text-amber-400" />
+                <div className="w-8 h-8 rounded-xl bg-white flex items-center justify-center p-0.5 shadow-md shadow-black/40 overflow-hidden flex-shrink-0 border border-amber-500/40">
+                  <Image 
+                    src="/Chrisland-Logo.jpeg" 
+                    alt="Chrisland University Crest" 
+                    width={28} 
+                    height={28} 
+                    unoptimized
+                    className="object-contain w-full h-full" 
+                  />
                 </div>
                 <div className="flex flex-col">
                   <div className="flex items-center gap-1.5">
@@ -1721,8 +1736,8 @@ export function Showcase() {
           <div className="max-w-2xl flex flex-col justify-between text-center lg:text-left">
             <div>
               <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/[0.06] text-amber-300 border border-amber-500/30 mb-4 shadow-sm">
-                <div className="w-4 h-4 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center flex-shrink-0">
-                  <GraduationCap className="w-2.5 h-2.5 text-amber-400" />
+                <div className="w-4 h-4 rounded-full bg-white border border-amber-500/40 flex items-center justify-center p-0.5 overflow-hidden flex-shrink-0">
+                  <Image src="/Chrisland-Logo.jpeg" alt="Chrisland Crest" width={14} height={14} unoptimized className="object-contain w-full h-full" />
                 </div>
                 <span>Chrisland University, Abeokuta · GST 206 AI Literacy Showcase</span>
               </div>
@@ -1810,8 +1825,8 @@ export function Showcase() {
             <div>
               <div className="flex items-center justify-between mb-3">
                 <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-400 flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-md bg-amber-500/20 border border-amber-500/40 flex items-center justify-center flex-shrink-0 shadow-sm">
-                    <Award className="w-3 h-3 text-amber-400" />
+                  <div className="w-5 h-5 rounded-md bg-white border border-amber-500/40 flex items-center justify-center p-0.5 overflow-hidden flex-shrink-0 shadow-sm">
+                    <Image src="/Chrisland-Logo.jpeg" alt="Chrisland Crest" width={16} height={16} unoptimized className="object-contain w-full h-full" />
                   </div>
                   Course Directorate & Lead Innovator
                 </span>
@@ -3529,8 +3544,8 @@ export function Showcase() {
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-3">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center shadow-sm flex-shrink-0 border border-amber-500/40">
-                    <MessageCircle className="w-4 h-4 text-amber-400" />
+                  <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center p-0.5 shadow-sm overflow-hidden flex-shrink-0 border border-amber-500/40">
+                    <Image src="/Chrisland-Logo.jpeg" alt="Chrisland University Logo" width={26} height={26} unoptimized className="object-contain w-full h-full" />
                   </div>
                   <div>
                     <h3 className="text-sm font-bold text-white">Send Correction / Update to Lecturer</h3>
@@ -3829,8 +3844,8 @@ export function Showcase() {
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-gradient-to-r from-amber-950/40 via-amber-900/20 to-transparent">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center shadow-md shadow-black/40 flex-shrink-0 border border-amber-500/40">
-                    <Award className="w-5 h-5 text-amber-400" />
+                  <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-0.5 shadow-md shadow-black/40 overflow-hidden flex-shrink-0 border border-amber-500/40">
+                    <Image src="/Chrisland-Logo.jpeg" alt="Chrisland Crest" width={32} height={32} unoptimized className="object-contain w-full h-full" />
                   </div>
                   <div>
                     <div className="flex items-center gap-2">
@@ -4483,8 +4498,8 @@ export function Showcase() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6 text-xs text-slate-400">
           {/* Institution Info */}
           <div className="flex items-center gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500/20 via-indigo-950/40 to-purple-950/60 border border-amber-500/40 flex items-center justify-center shadow-md shadow-black/40 flex-shrink-0">
-              <GraduationCap className="w-5 h-5 text-amber-400" />
+            <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center p-1 shadow-md shadow-black/40 overflow-hidden flex-shrink-0 border border-amber-500/40">
+              <Image src="/Chrisland-Logo.jpeg" alt="Chrisland University Crest" width={36} height={36} unoptimized className="object-contain w-full h-full" />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-slate-100 text-sm tracking-tight">Chrisland University</span>

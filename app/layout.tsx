@@ -55,11 +55,24 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  icons: {
+    icon: '/logo.png',
+    shortcut: '/logo.png',
+    apple: '/logo.png',
+  },
   openGraph: {
     title: 'AI Literacy & Vibe Coding Showcase | Chrisland University',
     description: 'Explore 29 individual web applications, 3 collaborative group platforms, and 29 video presentations developed by students mastering AI Literacy, Vibe Coding, Vibe Engineering, and Web App Development.',
     url: 'https://chrisland-gst206-showcase.vercel.app',
     siteName: 'Chrisland University GST 206 AI Literacy Showcase',
+    images: [
+      { 
+        url: '/Chrisland-Logo.jpeg', 
+        width: 512, 
+        height: 512, 
+        alt: 'Chrisland University Official Crest' 
+      }
+    ],
     locale: 'en_US',
     type: 'website',
   },
@@ -67,6 +80,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AI Literacy, Vibe Coding & Web App Development | Chrisland University',
     description: 'Explore student innovations in AI Literacy, Vibe Coding, Vibe Engineering, and Web Development at Chrisland University GST 206.',
+    images: ['/Chrisland-Logo.jpeg'],
     creator: '@ChrislandUni',
   },
   alternates: {
@@ -80,6 +94,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <head>
         <meta name="theme-color" content="#07090e" />
         <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="apple-touch-icon" href="/logo.png" />
       </head>
       <body className="antialiased bg-[#07090e] text-slate-100 min-h-screen" suppressHydrationWarning>
         {children}
