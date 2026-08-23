@@ -63,3 +63,8 @@ This file contains custom instructions for the AI agent. When implementing featu
 **Rule:** Strictly prioritize 100% free-tier resources and open-source alternatives.
 - Only suggest or implement tools that offer generous free tiers (e.g., Supabase Free Tier, Resend for free emails, Vercel for free hosting, free public APIs).
 - If a requested feature requires a paid service, explicitly warn the user and attempt to find a free or open-source workaround first.
+
+## 10. Continuous Auto-Deployment (GitHub & Vercel)
+**Trigger:** Whenever code changes, feature additions, bug fixes, or optimizations are completed and verified.
+**Rule:** Always stage, commit with a descriptive message, and automatically push changes to the `main` branch on GitHub (`git push origin main`) to trigger Vercel's automated CI/CD deployment pipeline without requiring manual user intervention.
+
