@@ -1,0 +1,27 @@
+{
+  "name": "Chrisland University GST 206 AI Literacy & Vibe Coding Showcase",
+  "short_name": "GST 206 Showcase",
+  "description": "Educating the Chrisland University community through AI Literacy, Vibe Coding, and Web Application Development.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#07090e",
+  "theme_color": "#07090e",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "categories": ["education", "technology", "health"],
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/clu-logo-white.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

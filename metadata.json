@@ -1,0 +1,6 @@
+{
+  "name": "AI Literacy Showcase",
+  "description": "Student innovations in AI Literacy, Vibe Coding, Vibe Engineering, and Web App Development addressing Stress, Anxiety, and Depression at Chrisland University GST 206 led by S. B. Omotoso.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
