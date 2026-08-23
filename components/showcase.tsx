@@ -60,9 +60,12 @@ import {
   Headphones,
   Volume2,
   Disc,
-  Radio
+  Radio,
+  Bot,
+  Loader2
 } from 'lucide-react';
 import Image from 'next/image';
+import { askAI } from '@/lib/ai';
 
 export type ThemeCategory = 'all' | 'stress' | 'anxiety' | 'depression';
 
@@ -433,6 +436,28 @@ export function Showcase() {
   // Toast State
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [isWhitepaperGenerating, setIsWhitepaperGenerating] = useState(false);
+
+  // AI Assistant Copilot State (Powered by OpenRouter Multi-Model Fallback)
+  const [isAiAssistantOpen, setIsAiAssistantOpen] = useState(false);
+  const [aiPrompt, setAiPrompt] = useState('');
+  const [aiLoading, setAiLoading] = useState(false);
+  const [aiResponse, setAiResponse] = useState<string | null>(null);
+  const [aiError, setAiError] = useState<string | null>(null);
+
+  const handleAskAI = async (promptToUse?: string) => {
+    const q = (promptToUse || aiPrompt).trim();
+    if (!q) return;
+    setAiLoading(true);
+    setAiError(null);
+    setAiResponse(null);
+    const res = await askAI(q);
+    if (res.success && res.result) {
+      setAiResponse(res.result);
+    } else {
+      setAiError(res.error || 'Failed to retrieve response from AI assistant.');
+    }
+    setAiLoading(false);
+  };
 
   const showToast = useCallback((msg: string) => {
     setToastMessage(msg);
@@ -1329,6 +1354,17 @@ export function Showcase() {
               <span>Executive Brief</span>
             </button>
 
+            {/* AI Assistant CTA button */}
+            <button
+              id="ai-copilot-header-btn"
+              onClick={() => setIsAiAssistantOpen(true)}
+              className="px-2.5 xl:px-3 py-1.5 rounded-xl bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-400/40 text-indigo-300 hover:text-indigo-200 text-xs font-bold inline-flex items-center gap-1.5 transition-all flex-shrink-0 shadow-sm"
+              title="Ask GST 206 AI Assistant"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+              <span>AI Assistant</span>
+            </button>
+
             {/* DESIGN PLATFORM ONLY: Add Entry, Google Sheet Sync Hub, Reset */}
             {isAdmin ? (
               <>
@@ -1382,6 +1418,15 @@ export function Showcase() {
 
           {/* MOBILE: Quick Action Icons & Hamburger Toggle Button */}
           <div className="flex lg:hidden items-center gap-2">
+            <button
+              onClick={() => setIsAiAssistantOpen(true)}
+              className="p-2 rounded-xl bg-indigo-500/20 border border-indigo-500/40 text-indigo-300"
+              title="GST 206 AI Assistant"
+              aria-label="GST 206 AI Assistant"
+            >
+              <Sparkles className="w-4 h-4" />
+            </button>
+
             <button
               onClick={() => setIsExecutiveSummaryModalOpen(true)}
               className="p-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300"
@@ -3643,6 +3688,144 @@ export function Showcase() {
                   </button>
                 </div>
               </form>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* AI ASSISTANT MODAL (Multi-Model OpenRouter Fallback) */}
+      <AnimatePresence>
+        {isAiAssistantOpen && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-sm overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 15 }}
+              className="w-full max-w-2xl bg-[#0a0d16] border border-white/15 rounded-3xl overflow-hidden shadow-2xl flex flex-col my-auto max-h-[90vh]"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-white/[0.02]">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-indigo-500/20 border border-indigo-500/40 flex items-center justify-center text-indigo-300">
+                    <Sparkles className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-white flex items-center gap-2">
+                      <span>GST 206 Academic AI Assistant</span>
+                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                        Multi-Model Fallback
+                      </span>
+                    </h3>
+                    <p className="text-[11px] text-slate-400">Ask anything about the showcase, student apps, or the mental health curriculum</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsAiAssistantOpen(false)}
+                  className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Chat Content Body */}
+              <div className="p-6 space-y-4 overflow-y-auto flex-1 text-xs">
+                {/* Suggested prompt chips */}
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
+                    Quick Prompts:
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {[
+                      'What is the Stress-Anxiety-Depression Continuum?',
+                      'How did students build 29 apps via Vibe Engineering?',
+                      'Tell me about the 3 syndicate platforms',
+                      'How does early stress intervention prevent depression?'
+                    ].map((p, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => {
+                          setAiPrompt(p);
+                          handleAskAI(p);
+                        }}
+                        className="px-2.5 py-1 rounded-lg bg-white/[0.04] hover:bg-indigo-600/20 border border-white/10 hover:border-indigo-500/30 text-slate-300 hover:text-indigo-200 text-[11px] transition-all text-left"
+                      >
+                        {p}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* AI Response Output Card */}
+                {aiLoading && (
+                  <div className="p-4 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center gap-3 text-slate-300 animate-pulse">
+                    <Loader2 className="w-4 h-4 animate-spin text-indigo-400" />
+                    <span>Analyzing GST 206 knowledge base & generating response...</span>
+                  </div>
+                )}
+
+                {aiError && (
+                  <div className="p-4 rounded-2xl bg-red-950/40 border border-red-500/30 text-red-300 space-y-1">
+                    <div className="font-bold flex items-center gap-1.5">
+                      <AlertTriangle className="w-3.5 h-3.5 text-red-400" />
+                      <span>Notice</span>
+                    </div>
+                    <p className="text-[11px] text-red-200">{aiError}</p>
+                    <p className="text-[10px] text-red-400 mt-1">Make sure OPENROUTER_API_KEY is configured in your environment.</p>
+                  </div>
+                )}
+
+                {aiResponse && (
+                  <div className="p-5 rounded-2xl bg-gradient-to-br from-indigo-950/30 via-[#0c101a] to-emerald-950/20 border border-white/15 space-y-3 shadow-lg">
+                    <div className="flex items-center justify-between border-b border-white/10 pb-2">
+                      <span className="text-[11px] font-bold text-indigo-300 flex items-center gap-1.5">
+                        <Bot className="w-3.5 h-3.5 text-indigo-400" />
+                        <span>AI Response</span>
+                      </span>
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(aiResponse);
+                          showToast('Response copied to clipboard');
+                        }}
+                        className="text-[10px] text-slate-400 hover:text-white flex items-center gap-1"
+                      >
+                        <Copy className="w-3 h-3" />
+                        <span>Copy</span>
+                      </button>
+                    </div>
+                    <div className="text-slate-200 leading-relaxed whitespace-pre-line text-xs">
+                      {aiResponse}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Input Form Footer */}
+              <div className="p-4 border-t border-white/10 bg-white/[0.02]">
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    handleAskAI();
+                  }}
+                  className="flex items-center gap-2"
+                >
+                  <input
+                    type="text"
+                    value={aiPrompt}
+                    onChange={(e) => setAiPrompt(e.target.value)}
+                    placeholder="Ask a question about GST 206 AI & Vibe Coding..."
+                    disabled={aiLoading}
+                    className="flex-1 bg-white/[0.06] border border-white/15 rounded-xl px-4 py-2.5 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-indigo-500 disabled:opacity-50"
+                  />
+                  <button
+                    type="submit"
+                    disabled={aiLoading || !aiPrompt.trim()}
+                    className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white text-xs font-bold inline-flex items-center gap-1.5 transition-all shadow-md shadow-indigo-600/30"
+                  >
+                    {aiLoading ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Send className="w-3.5 h-3.5" />}
+                    <span>Ask</span>
+                  </button>
+                </form>
+              </div>
             </motion.div>
           </div>
         )}
