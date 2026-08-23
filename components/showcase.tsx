@@ -1190,13 +1190,13 @@ export function Showcase() {
           </div>
 
           {/* DESKTOP: Horizontal Menu Bar */}
-          <div className="hidden xl:flex items-center gap-2.5">
+          <div className="hidden lg:flex items-center gap-2 2xl:gap-3">
             {/* Dedicated Showcase Items Menu */}
-            <nav className="flex items-center gap-1 p-1 bg-white/[0.04] border border-white/10 rounded-xl">
+            <nav className="flex items-center gap-0.5 2xl:gap-1 p-1 bg-white/[0.04] border border-white/10 rounded-xl">
               <button
                 id="menu-all-btn"
                 onClick={() => { setActiveTab('all'); setActiveSection(null); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-1.5 px-2 2xl:px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                   activeTab === 'all' && activeSection === null
                     ? 'bg-[#B25900] text-white shadow-md shadow-[#B25900]/25'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
@@ -1209,7 +1209,7 @@ export function Showcase() {
               <button
                 id="menu-framework-btn"
                 onClick={() => scrollToSection('section-framework', 'framework')}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-1.5 px-2 2xl:px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                   activeSection === 'framework' || activeTab === 'framework'
                     ? 'bg-amber-600 text-white shadow-md shadow-amber-600/25'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
@@ -1222,7 +1222,7 @@ export function Showcase() {
               <button
                 id="menu-groups-btn"
                 onClick={() => scrollToSection('section-groups', 'groups')}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-1.5 px-2 2xl:px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                   activeSection === 'groups' || activeTab === 'groups'
                     ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
@@ -1238,7 +1238,7 @@ export function Showcase() {
               <button
                 id="menu-websites-btn"
                 onClick={() => scrollToSection('section-websites', 'websites')}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-1.5 px-2 2xl:px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                   activeSection === 'websites' || activeTab === 'websites'
                     ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/25'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
@@ -1254,7 +1254,7 @@ export function Showcase() {
               <button
                 id="menu-videos-btn"
                 onClick={() => scrollToSection('section-videos', 'videos')}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-1.5 px-2 2xl:px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                   activeSection === 'videos' || activeTab === 'videos'
                     ? 'bg-red-600 text-white shadow-md shadow-red-600/25'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
@@ -1270,7 +1270,7 @@ export function Showcase() {
               <button
                 id="menu-articles-btn"
                 onClick={() => scrollToSection('section-articles', 'articles')}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-1.5 px-2 2xl:px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                   activeSection === 'articles' || activeTab === 'articles'
                     ? 'bg-purple-600 text-white shadow-md shadow-purple-600/25'
                     : 'text-slate-300 hover:text-white hover:bg-white/5'
@@ -1286,7 +1286,7 @@ export function Showcase() {
               <button
                 id="menu-engagement-btn"
                 onClick={() => scrollToSection('section-engagement', 'engagement')}
-                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`flex items-center gap-1.5 px-2 2xl:px-2.5 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all ${
                   activeSection === 'engagement' || activeTab === 'engagement'
                     ? 'bg-amber-600 text-white shadow-md shadow-amber-600/25'
                     : 'text-amber-300 hover:text-white hover:bg-amber-500/10'
@@ -1298,7 +1298,7 @@ export function Showcase() {
             </nav>
 
             {/* Search Input */}
-            <div className="relative w-40 2xl:w-48">
+            <div className="relative w-36 xl:w-44 2xl:w-48">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/40" />
               <input 
                 id="desktop-search-input"
@@ -1322,7 +1322,7 @@ export function Showcase() {
             <button
               id="executive-summary-header-btn"
               onClick={() => setIsExecutiveSummaryModalOpen(true)}
-              className="px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-400/40 text-amber-300 hover:text-amber-200 text-xs font-bold inline-flex items-center gap-1.5 transition-all flex-shrink-0 shadow-sm"
+              className="px-2.5 xl:px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-400/40 text-amber-300 hover:text-amber-200 text-xs font-bold inline-flex items-center gap-1.5 transition-all flex-shrink-0 shadow-sm"
               title="Open Executive Innovation Summary for University Authorities & Public"
             >
               <Award className="w-3.5 h-3.5 text-amber-400" />
@@ -1335,7 +1335,7 @@ export function Showcase() {
                 <button
                   id="add-entry-btn-desktop"
                   onClick={handleAddNewEntry}
-                  className="px-3 py-1.5 rounded-xl bg-[#B25900] hover:bg-[#d96d00] text-white text-xs font-bold inline-flex items-center gap-1.5 shadow-md shadow-[#B25900]/25 transition-all flex-shrink-0"
+                  className="px-2.5 xl:px-3 py-1.5 rounded-xl bg-[#B25900] hover:bg-[#d96d00] text-white text-xs font-bold inline-flex items-center gap-1.5 shadow-md shadow-[#B25900]/25 transition-all flex-shrink-0"
                   title="Add New Student Entry (Design Platform)"
                 >
                   <Plus className="w-3.5 h-3.5" />
@@ -1345,7 +1345,7 @@ export function Showcase() {
                 <button
                   id="google-sheet-hub-btn-desktop"
                   onClick={() => setIsSheetSyncModalOpen(true)}
-                  className="px-3 py-1.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/40 text-emerald-300 hover:text-white text-xs font-bold inline-flex items-center gap-1.5 transition-all flex-shrink-0 shadow-sm"
+                  className="px-2.5 xl:px-3 py-1.5 rounded-xl bg-emerald-950/60 hover:bg-emerald-900/80 border border-emerald-500/40 text-emerald-300 hover:text-white text-xs font-bold inline-flex items-center gap-1.5 transition-all flex-shrink-0 shadow-sm"
                   title="Google Sheet Updates & Sync Hub"
                 >
                   <FileSpreadsheet className="w-3.5 h-3.5 text-emerald-400" />
@@ -1381,7 +1381,7 @@ export function Showcase() {
           </div>
 
           {/* MOBILE: Quick Action Icons & Hamburger Toggle Button */}
-          <div className="flex xl:hidden items-center gap-2">
+          <div className="flex lg:hidden items-center gap-2">
             <button
               onClick={() => setIsExecutiveSummaryModalOpen(true)}
               className="p-2 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-300"
@@ -1447,7 +1447,7 @@ export function Showcase() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="xl:hidden mt-3 pt-3 border-t border-white/10 space-y-3 overflow-hidden"
+              className="lg:hidden mt-3 pt-3 border-t border-white/10 space-y-3 overflow-hidden"
             >
               {/* Institution Identity in Mobile Drawer */}
               <div className="flex items-center gap-2.5 px-1 py-1">
